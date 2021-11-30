@@ -10,8 +10,45 @@ ingressRoute:
 deployment:
   enabled: true
   # Can be either Deployment or DaemonSet
-  kind: DaemonSet
+  kind: Deployment
 
+# Configure ports
+ports:
+  # The name of this one can't be changed as it is used for the readiness and
+  # liveness probes, but you can adjust its config to your liking
+  traefik:
+    port: 9000
+    expose: false
+    protocol: TCP
+  web:
+    port: 8000
+    # hostPort: 8000
+    expose: true
+    exposedPort: 80
+    protocol: TCP
+    # Use nodeport if set. This is useful if you have configured Traefik in a
+    # LoadBalancer
+    # nodePort: 32080
+    # Port Redirections
+    # Added in 2.2, you can make permanent redirects via entrypoints.
+    # https://docs.traefik.io/routing/entrypoints/#redirection
+    redirectTo: websecure
+  websecure:
+    port: 8443
+    # hostPort: 8443
+    expose: true
+    exposedPort: 443
+    # The port protocol (TCP/UDP)
+    protocol: TCP
+    # nodePort: 32443
+    # Set TLS at the entrypoint
+    # https://doc.traefik.io/traefik/routing/entrypoints/#tls
+    tls:
+      enabled: true
+      # this is the name of a TLSOption definition
+      options: ""
+      certResolver: "le"
+      domains: []
 #
 # Configure providers
 #
@@ -41,8 +78,8 @@ autoscaling:
 # Enable persistence using Persistent Volume Claims
 # ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 # After the pvc has been mounted, add the configs into traefik by using the `additionalArguments` list below, eg:
-# additionalArguments:
-# - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+additionalArguments:
+- "--certificatesresolvers.le.acme.storage=/data/acme.json"
 # It will persist TLS certificates.
 persistence:
   enabled: false

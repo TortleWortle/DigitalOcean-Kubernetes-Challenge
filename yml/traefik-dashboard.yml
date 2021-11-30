@@ -6,9 +6,14 @@ metadata:
 spec:
   entryPoints:
     - web
+    - websecure
   routes:
-    - match: Host(`traefik.localhost`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    - match: Host(`traefik.localhost`)
       kind: Rule
       services:
         - name: api@internal
           kind: TraefikService
+  tls:
+    certResolver: le
+    domains:
+      - main: "traefik.localhost"
