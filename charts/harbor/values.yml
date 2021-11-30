@@ -1,0 +1,16 @@
+expose:
+  type: ingress
+  tls:
+    enabled: false
+  ingress:
+    hosts:
+      core: harbor.localhost
+      notary: notary.localhost
+# If Harbor is deployed behind the proxy, set it as the URL of proxy
+externalURL: http://harbor.localhost
+
+# The initial password of Harbor admin. Change it from portal after launching Harbor
+harborAdminPassword: "Barhor12345"
+
+# The secret key used for encryption. Must be a string of 16 chars.
+secretKey: "not-a-secure-key"
