@@ -21,8 +21,6 @@ How to install traefik as an ingress and using the kubernetes ingress api
 
 How to install harbor and partially configuring it
 
-How to install certmanager and configure TLS (TODO)
-
 
 # Setup
 
