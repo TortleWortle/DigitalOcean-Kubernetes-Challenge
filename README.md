@@ -21,10 +21,16 @@ Learn how to use kubernetes and understanding how to use helm.
 ## Tech discovered
 Harbor is pretty amazing, I've searched for registries in the past and Harbor was relatively painless and looks amazing.
 
+Helm is fantastic, I'm yet to write my own proper helm charts but I'm definitely using it when I use Kubernetes more.
+
+Kubernetes (ish) I've played with Kubernetes a little before but I've discovered so much more about it and got a lot more use out of it during this challenge.
+
 ## Mistakes I've made
 Don't forget to add labels to your pods, I spend hours trying to figure out why the service selector wasn't working.
 
 Helm upgrading with different encryption keys can lead to some weird behaviour (please correct me if I'm wrong)
+
+Not adding appropiate annotations to change how the ingress functions.
 
 
 ## Setup
