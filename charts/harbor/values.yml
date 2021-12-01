@@ -1,12 +1,15 @@
 expose:
   type: ingress
   tls:
-    enabled: true
+    enabled: false
   ingress:
     hosts:
       core: harbor.do.tortle.tech
       notary: notary.do.tortle.tech
-
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/router.tls.certresolver: le
 # If Harbor is deployed behind the proxy, set it as the URL of proxy
 externalURL: https://harbor.do.tortle.tech
 
