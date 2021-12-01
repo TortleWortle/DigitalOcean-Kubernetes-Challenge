@@ -1,13 +1,14 @@
 expose:
   type: ingress
   tls:
-    enabled: false
+    enabled: true
   ingress:
     hosts:
-      core: harbor.localhost
-      notary: notary.localhost
+      core: harbor.do.tortle.tech
+      notary: notary.do.tortle.tech
+
 # If Harbor is deployed behind the proxy, set it as the URL of proxy
-externalURL: http://harbor.localhost
+externalURL: https://harbor.do.tortle.tech
 
 # The initial password of Harbor admin. Change it from portal after launching Harbor
 harborAdminPassword: "Barhor12345"

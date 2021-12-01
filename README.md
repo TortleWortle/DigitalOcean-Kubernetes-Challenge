@@ -25,7 +25,13 @@ How to install harbor and partially configuring it
 # Setup
 
 ## Setup Traefik Ingress
-`helm install --namespace traefik --values charts/traefik/values.yml traefik traefik/traefik`
+```sh
+helm install \
+--namespace traefik \
+--create-namespace \
+--values charts/traefik/values.yml \
+traefik traefik/traefik
+```
 
 ## Setup Harbor (Don't forget to change the username/password combination)
 
@@ -37,13 +43,22 @@ echo $HARBORPASS
 
 ```sh
 HARBORKEY=$(openssl rand -hex 8)
-helm install --values charts/harbor/values.yml \
---set-string "secretKey=$HARBORKEY,harborAdminPassword=$HARBORPASS" \
+helm install \
+--namespace harbor \
+--create-namespace \
+--values charts/harbor/values.yml \
+--set-string "secretKey=$HARBORKEY" \
+--set-string "harborAdminPassword=$HARBORPASS" \
 harbor harbor/harbor
 ```
 
 ## Local traefik dashboard at [traefik.localhost](http://traefik.localhost/dashboard/)
 `kubectl apply -f yml/traefik-dashboard.yml`
+
+
+## Samples
+- [Example nginx](https://nginx.do.tortle.tech)
+- [Harbor](https://harbor.do.tortle.tech)
 
 ## Resources
 

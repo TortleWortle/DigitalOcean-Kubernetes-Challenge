@@ -80,6 +80,8 @@ autoscaling:
 # After the pvc has been mounted, add the configs into traefik by using the `additionalArguments` list below, eg:
 additionalArguments:
 - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+- "--certificatesresolvers.le.acme.tlsChallenge=true"
+- "--certificatesresolvers.le.acme.email=example@tortle.tech"
 # It will persist TLS certificates.
 persistence:
   enabled: false
