@@ -54,6 +54,9 @@ harbor harbor/harbor
 
 Don't forget to use the same secretKey when doing a `helm upgrade`. Because I did and everything broke :)
 
+## Example nginx website
+`kubectl apply -f yml/nginx-example.yml`
+
 ## Local traefik dashboard at [traefik.localhost](http://traefik.localhost/dashboard/)
 `kubectl apply -f yml/traefik-dashboard.yml`
 
