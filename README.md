@@ -17,6 +17,7 @@ Learn how to use kubernetes and understanding how to use helm.
 - Using helm charts to install and override values.
 - That Harbor is really cool, relatively "easy" to get started with and looks amazing.
 - Installing and using traefik as an ingress controller
+- Migrating from a local cluster to digitalocean's Kubernetes was really smooth
 
 ## Tech discovered
 Harbor is pretty amazing, I've searched for registries in the past and Harbor was relatively painless and looks amazing.
